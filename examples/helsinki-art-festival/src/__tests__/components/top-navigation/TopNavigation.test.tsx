@@ -84,6 +84,13 @@ describe('TopNavigation Component should', () => {
     expect(screen.getAllByText('Programme').length).toBeGreaterThan(0);
   });
 
+  it('use an inline data-uri logo when no Sitecore logo is configured', () => {
+    render(<TopNavigation {...mockTopNavigationPropsEmpty} />);
+    const brand = screen.getByLabelText('Helsinki Art Festival');
+    const img = brand.querySelector('img');
+    expect(img?.getAttribute('src')).toMatch(/^data:image\/png;base64,/);
+  });
+
   it('show authoring hint in editing mode without datasource', () => {
     render(<TopNavigation {...mockTopNavigationPropsEditing} />);
     expect(screen.getByText(/configure logo, navigation links/i)).toBeInTheDocument();

@@ -5,6 +5,7 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 
 // end of built-in components
 import * as TopNavigation from 'src/components/top-navigation/TopNavigation';
+import * as festivallogo from 'src/components/top-navigation/festival-logo';
 import * as Title from 'src/components/title/Title';
 import * as StructuredData from 'src/components/structured-data/StructuredData';
 import * as SiteFooter from 'src/components/site-footer/SiteFooter';
@@ -26,6 +27,7 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['FEaaSWrapper', FEaaSServerWrapper],
   ['Form', { ...Form, componentType: 'client' }],
   ['TopNavigation', { ...TopNavigation, componentType: 'client' }],
+  ['festival-logo', { ...festivallogo }],
   ['Title', { ...Title }],
   ['StructuredData', { ...StructuredData }],
   ['SiteFooter', { ...SiteFooter, componentType: 'client' }],

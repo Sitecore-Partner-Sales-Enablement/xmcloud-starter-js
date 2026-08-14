@@ -11,6 +11,7 @@ import {
   TopNavigationLinkItem,
   TopNavigationProps,
 } from './top-navigation.props';
+import { FESTIVAL_LOGO_DATA_URI } from './festival-logo';
 
 /** Demo links matching helsinkifestival.fi when no datasource is configured */
 const FALLBACK_NAV: Array<{ text: string; href: string }> = [
@@ -52,12 +53,10 @@ const resolveLinkItems = (items?: TopNavigationLinkItem[]): ResolvedNavLink[] =>
     .filter((item): item is ResolvedNavLink => Boolean(item));
 };
 
-const DEFAULT_LOGO_SRC = '/helsinki-art-festival-logo.png';
-
 const FestivalMark = ({ className }: { className?: string }) => (
   // eslint-disable-next-line @next/next/no-img-element
   <img
-    src={DEFAULT_LOGO_SRC}
+    src={FESTIVAL_LOGO_DATA_URI}
     alt=""
     width={60}
     height={60}
@@ -165,8 +164,27 @@ export const Default = ({ params, fields, page }: TopNavigationProps): JSX.Eleme
   };
 
   const Brand = () => {
+    // In Pages editor, Next/Image optimizer URLs and root-relative public paths
+    // often resolve against the wrong host — use a plain <img> (data URI fallback
+    // or the Sitecore media src) so the logo keeps working in editing/preview.
+    const logoAlt =
+      typeof logoField?.value?.alt === 'string' && logoField.value.alt
+        ? logoField.value.alt
+        : 'Helsinki Art Festival';
+
     const mark = hasLogo ? (
-      <ContentSdkImage field={logoField} className="h-[60px] w-[60px] object-contain" />
+      isEditing ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={String(logoField?.value?.src)}
+          alt={logoAlt}
+          width={60}
+          height={60}
+          className="h-[60px] w-[60px] object-contain"
+        />
+      ) : (
+        <ContentSdkImage field={logoField} className="h-[60px] w-[60px] object-contain" />
+      )
     ) : (
       <FestivalMark />
     );
@@ -178,7 +196,7 @@ export const Default = ({ params, fields, page }: TopNavigationProps): JSX.Eleme
           className="brand inline-flex shrink-0 items-center no-underline"
           aria-label="Helsinki Art Festival"
         >
-          {hasLogo ? mark : <FestivalMark />}
+          {mark}
         </CompatibleLink>
       );
     }
