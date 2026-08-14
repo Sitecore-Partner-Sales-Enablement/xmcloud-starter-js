@@ -6,6 +6,8 @@ import {
   RichText,
   Text,
   ImageField,
+  RichTextField,
+  TextField,
 } from '@sitecore-content-sdk/nextjs';
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import { getDatasource, getFieldValue } from 'lib/component-props';
@@ -30,6 +32,11 @@ const isTruthyFlag = (value: unknown): boolean => {
   const normalized = value.trim().toLowerCase();
   return normalized === '1' || normalized === 'true' || normalized === 'left' || normalized === 'yes';
 };
+
+const isRichTextTitle = (
+  field: TextField | RichTextField | undefined
+): field is RichTextField =>
+  typeof field?.value === 'string' && /<\/?[a-z][\s\S]*>/i.test(field.value);
 
 const collectImages = (datasource?: StandardPromoDatasource): ImageField[] => {
   if (!datasource) return [];
@@ -94,9 +101,6 @@ export const Default = ({ params, fields, page }: StandardPromoProps): JSX.Eleme
     (!hasDatasource && !isEditing) ||
     (isEditing && Boolean(ctaLinkField));
 
-  const titleIsRichText =
-    typeof titleField?.value === 'string' && /<\/?[a-z][\s\S]*>/i.test(titleField.value);
-
   const mediaColumn = (
     <div className="standard-promo__media relative aspect-[4/3] w-full overflow-hidden bg-bg-hero md:aspect-auto md:min-h-[480px] lg:min-h-[560px]">
       {images.length > 0 ? (
@@ -156,7 +160,7 @@ export const Default = ({ params, fields, page }: StandardPromoProps): JSX.Eleme
       {showTitle && (
         <div className="mb-6 font-heading text-[clamp(2rem,4vw,50px)] font-bold leading-[1.1] text-black md:pr-10">
           {titleField && (titleValue || isEditing) ? (
-            titleIsRichText ? (
+            isRichTextTitle(titleField) ? (
               <RichText field={titleField} tag="h2" />
             ) : (
               <Text field={titleField} tag="h2" className="whitespace-pre-line" />
