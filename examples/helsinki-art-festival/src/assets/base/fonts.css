@@ -1,0 +1,54 @@
+/* Helsinki Festival typefaces (served from helsinkifestival.fi theme assets) */
+@font-face {
+  font-family: 'Van Condensed Pro';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/VanCondensedPro.woff2')
+      format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Van Condensed Pro';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/VanCondensedPro-Italic.woff2')
+      format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Van Condensed Pro';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/VanCondensedPro-Bold.woff2')
+      format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trio Grotesk';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/TrioGrotesk-Normal.woff2')
+      format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trio Grotesk';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/TrioGrotesk-Medium.woff2')
+      format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trio Grotesk';
+  src: url('https://helsinkifestival.fi/app/themes/hammer/assets/fonts/TrioGrotesk-Bold.woff2')
+      format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

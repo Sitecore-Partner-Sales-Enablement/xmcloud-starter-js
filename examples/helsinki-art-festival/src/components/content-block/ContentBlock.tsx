@@ -6,14 +6,19 @@ import { ContentBlockProps } from './content-block.props';
 
 /**
  * A simple Content Block component, with a heading and rich text block.
- * This is the most basic building block of a content site, and the most basic
- * Content SDK component that's useful.
  */
 const ContentBlock = ({ fields }: ContentBlockProps): JSX.Element => (
-  <section className="contentBlock">
-    <Text tag="h2" className="contentTitle" field={fields?.heading} />
+  <section className="contentBlock mx-auto max-w-[720px] px-4 py-8 md:px-8">
+    <Text
+      tag="h2"
+      className="contentTitle mb-4 font-heading text-[1.875rem] font-bold text-black"
+      field={fields?.heading}
+    />
 
-    <RichText className="contentDescription" field={fields?.content} />
+    <RichText
+      className="contentDescription font-body text-lg leading-relaxed text-black [&_a]:font-bold [&_a]:underline [&_a]:hover:text-accent-pink [&_*]:max-w-full"
+      field={fields?.content}
+    />
   </section>
 );
 

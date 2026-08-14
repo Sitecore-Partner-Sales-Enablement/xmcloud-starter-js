@@ -2,12 +2,21 @@ import React, { JSX } from 'react';
 import { LinkField, Text, TextField } from '@sitecore-content-sdk/nextjs';
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import { getDatasource, getFieldValue } from 'lib/component-props';
+import { cn, componentShell } from 'lib/utils';
 import { TitleComponentContentProps, TitleProps } from './title.props';
 
 const ComponentContent = ({ id, styles = '', children }: TitleComponentContentProps): JSX.Element => (
-  <div className={`component title ${styles.trim()}`} id={id}>
+  <div className={cn(componentShell, 'title', styles)} id={id}>
     <div className="component-content">
-      <div className="field-title">{children}</div>
+      <div
+        className={cn(
+          'field-title font-heading font-bold text-black',
+          '[&_a]:text-inherit [&_a]:no-underline [&_a]:hover:text-accent-pink',
+          '[&_span]:text-inherit'
+        )}
+      >
+        {children}
+      </div>
     </div>
   </div>
 );
@@ -31,10 +40,10 @@ export const Default = ({ params, fields, page }: TitleProps): JSX.Element => {
   return (
     <ComponentContent styles={styles} id={id}>
       {page?.mode?.isEditing ? (
-        <Text field={titleField} />
+        <Text field={titleField} tag="h1" />
       ) : (
         <CompatibleLink field={link}>
-          <Text field={titleField} />
+          <Text field={titleField} tag="h1" />
         </CompatibleLink>
       )}
     </ComponentContent>

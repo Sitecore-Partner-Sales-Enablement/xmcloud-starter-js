@@ -1,3 +1,10 @@
+export function cn(...classes: Array<string | false | null | undefined>): string {
+  return classes.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+}
+
+/** Shared Sitecore component shell */
+export const componentShell = 'component relative w-full';
+
 export function getBaseUrl(host?: string | null): string {
   if (host) {
     const protocol = process.env.NODE_ENV === "development" ? "http" : "https";

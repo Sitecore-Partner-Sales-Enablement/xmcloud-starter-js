@@ -1,121 +1,30 @@
-/* boxed */
+/* Sitecore rendering-parameter style variants — Helsinki Festival look */
+
 .boxed {
-  @apply box-border my-[20px] mx-0 max-mobile-large:p-[10px] max-mobile:p-[10px];
-  > div {
-    @apply max-w-[960px] mx-auto! my-0!;
-  }
+  @apply box-border my-5 mx-0;
 }
 
-/* clearfix */
-.component-content-clearfix {
-  .component-content:after {
-    @apply content-none table clear-both;
-  }
-}
-.component-clearfix:after {
-  @apply content-none table clear-both;
+.boxed > div {
+  @apply mx-auto! my-0! max-w-[1100px];
 }
 
-/* highlighted */
-.highlighted-top {
-  @apply bg-white border-t-[3px] border-t-[#15909c] border-solid p-[25px] m-0;
-}
-
-.highlighted-top h1,
-.highlighted-top h2,
-.highlighted-top h3,
-.highlighted-top h4 {
-  @apply m-[0_0_10px_0];
-}
-
-.highlighted-bottom {
-  @apply bg-white border-b-[3px] border-b-[#15909c] border-solid p-[25px] m-0;
-}
-
-.highlighted-bottom h1,
-.highlighted-bottom h2,
-.highlighted-bottom h3,
-.highlighted-bottom h4 {
-  @apply m-[0_0_10px_0];
-}
-
-.highlighted-left {
-  @apply bg-white border-l-[3px] border-l-[#15909c] border-solid p-[25px] m-0;
-}
-
-.highlighted-left h1,
-.highlighted-left h2,
-.highlighted-left h3,
-.highlighted-left h4 {
-  @apply m-[0_0_10px_0];
-}
-
+.highlighted-top,
+.highlighted-bottom,
+.highlighted-left,
 .highlighted-right {
-  @apply bg-white border-r-[3px] border-r-[#15909c] border-solid p-[25px] m-0;
+  @apply m-0 border-0 bg-bg-hero p-6 md:p-8;
 }
 
-.highlighted-right h1,
-.highlighted-right h2,
-.highlighted-right h3,
-.highlighted-right h4 {
-  @apply m-[0_0_10px_0];
+.promo.link-button a,
+.link.link-button .is-empty-hint,
+.link.link-button .field-link span,
+.link.link-button a {
+  @apply default-link-button;
 }
 
-/* link-button */
-
-@utility default-link-button {
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-border-gray);
-  font-size: 12px;
-  display: inline-block;
-  vertical-align: middle;
-  box-sizing: border-box;
-  margin: 5px 0;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  &:hover {
-    color: var(--color-text-basic);
-    background: var(--color-bg-light-gray);
-  }
+.hero-banner .sc-image-wrapper {
+  @apply opacity-0;
 }
-
-.promo.link-button {
-  a {
-    @apply default-link-button bg-[#f6f6f6] text-text-basic;
-  }
-}
-.link.link-button {
-  .is-empty-hint,
-  .field-link span,
-  a {
-    @apply default-link-button;
-  }
-}
-
-/* basic component */
-.component-content {
-  .row {
-    @apply max-mobile-large:p-0 max-mobile-large:m-0;
-    > * {
-      @apply max-mobile-large:p-0 max-mobile-large:m-0;
-    }
-  }
-}
-
-.hero-banner {
-  .component-content {
-    @apply bg-center bg-no-repeat bg-cover h-[800px] max-mobile-large:h-[300px];
-  }
-
-  .sc-image-wrapper {
-    @apply opacity-0;
-  }
-}
-
-/* alignment */
 
 .position-left,
 .position-left * {
@@ -132,14 +41,210 @@
   text-align: center !important;
 }
 
-.position-left select {
-  direction: ltr !important;
+.cover-background > .component-content,
+.fixed-background > .component-content,
+.parallax-background > .component-content {
+  @apply bg-cover bg-center bg-no-repeat;
 }
 
-.position-right select {
-  direction: rtl !important;
+.container-gray-background {
+  @apply bg-bg-hero;
 }
 
-.position-center select {
-  text-align-last: center !important;
+.container-clean-background {
+  @apply bg-bg-basic-color;
+}
+
+.container-dark-background {
+  @apply bg-bg-black text-text-white;
+}
+
+.container-color-background,
+.container-dark-background.bg-footer,
+footer .container-dark-background {
+  @apply bg-bg-footer text-text-basic;
+}
+
+.indent {
+  margin: 0 1.5rem;
+}
+
+.indent-top {
+  margin-top: 1.25rem;
+}
+
+.indent-bottom {
+  margin-bottom: 0.5rem;
+}
+
+.sxa-bordered > .component-content {
+  @apply border border-black p-4;
+}
+
+.image-default-size img {
+  @apply w-auto! max-w-none;
+}
+
+/* Promo CMS variants */
+.promo.absolute-bottom-link {
+  @apply relative;
+}
+
+.promo.absolute-bottom-link .field-promolink {
+  @apply absolute right-0 bottom-0;
+}
+
+.promo.promo-hero {
+  @apply relative text-center;
+}
+
+.promo.promo-hero .field-promotext {
+  @apply absolute top-1/2 right-0 left-0 -translate-y-1/2 bg-promo-bg-hero p-6 text-text-white;
+}
+
+.promo.promo-hero .field-promotext > a {
+  @apply text-inherit no-underline;
+}
+
+.promo.main-promo-no-border > .component-content {
+  @apply border-0;
+}
+
+/* Link list / footer lists */
+.link-list.list-vertical h3 {
+  @apply mb-3 border-0 font-heading text-[25px] font-bold text-black;
+}
+
+footer .link-list h3,
+footer .title .field-title {
+  @apply border-0 font-heading text-[25px] font-bold text-black;
+}
+
+footer .link-list a,
+footer .navigation a {
+  @apply font-body text-[25px] font-bold text-black no-underline hover:underline;
+}
+
+footer .contacts a,
+footer .contacts p,
+footer .contacts span {
+  @apply text-black;
+}
+
+footer .indent-inner {
+  @apply p-0;
+}
+
+/* Header brand title (Sitecore title in header) */
+header .title {
+  @apply shrink-0 bg-transparent px-0 py-0 text-left;
+}
+
+header .title .field-title,
+header .title .field-title a,
+header .title .field-title h1 {
+  @apply font-heading text-left text-lg font-bold tracking-normal text-black no-underline md:text-xl;
+}
+
+header .navigation {
+  @apply grow;
+}
+
+/* TopNavigation — match helsinkifestival.fi header nav-link styles */
+.top-navigation .nav-link,
+.top-navigation a.nav-link {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.top-navigation .nav-link:hover,
+.top-navigation .nav-link:focus,
+.top-navigation a.nav-link:hover,
+.top-navigation a.nav-link:focus {
+  color: #000000;
+  text-decoration: none;
+}
+
+.top-navigation .primary-nav .nav-item {
+  margin-inline: 18px;
+}
+
+/* SiteFooter — match helsinkifestival.fi footer */
+.site-footer,
+.site-footer a,
+.site-footer button.cookie-consent {
+  font-family: 'Van Condensed Pro', sans-serif;
+}
+
+.site-footer a,
+.site-footer button.cookie-consent {
+  color: #000000;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus,
+.site-footer button.cookie-consent:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-footer .primary-nav a {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.site-footer .secondary-nav a,
+.site-footer .cookie-consent {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+/* Page titles in main — Night of the Arts hero band */
+main .title,
+#content .title {
+  @apply bg-bg-hero px-4 py-16 text-center md:px-8 md:py-[100px];
+}
+
+main .title .field-title,
+#content .title .field-title {
+  @apply mx-auto max-w-[1100px] text-[clamp(2rem,5vw,3.125rem)] leading-tight tracking-tight;
+}
+
+/* Navigation CMS horizontal helper */
+.navigation.navigation-horizontal .component-content .level0,
+.navigation.navigation-horizontal .component-content .level1 {
+  @apply float-none m-0;
+}
+
+main .main-header {
+  @apply mt-8 mb-6 bg-bg-hero px-4 py-16 text-center md:px-8 md:py-[100px];
+}
+
+main .main-header h4 {
+  @apply font-heading text-[clamp(2rem,5vw,3.125rem)] font-bold text-black;
+}
+
+main .main-news-header {
+  @apply mt-10 px-4 md:px-8;
+}
+
+main .main-news-header h2 {
+  @apply font-heading text-[1.875rem] font-bold text-black;
+}
+
+.rich-text-lists ul,
+.field-featurelist ul {
+  @apply m-0 list-none p-0;
+}
+
+.rich-text-lists ul li,
+.field-featurelist ul li {
+  @apply relative my-2 list-none pl-0;
 }

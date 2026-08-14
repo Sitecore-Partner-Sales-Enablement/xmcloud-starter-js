@@ -53,21 +53,23 @@ export const CompatibleLink = forwardRef<HTMLAnchorElement, CompatibleLinkProps>
     const nextHref = `${href}${normalizedQuery}${normalizedHash}`;
 
     if (isMatching && !isFileUrl) {
+      const fieldClassName =
+        typeof value?.class === 'string'
+          ? value.class
+          : typeof value?.className === 'string'
+            ? value.className
+            : undefined;
+      const { className: restClassName, ...linkRest } = rest;
+
       return (
         <NextLink
           href={nextHref}
           key="link"
           title={typeof value?.title === 'string' ? value.title : undefined}
           target={typeof value?.target === 'string' ? value.target : undefined}
-          className={
-            typeof value?.class === 'string'
-              ? value.class
-              : typeof value?.className === 'string'
-                ? value.className
-                : undefined
-          }
+          className={[fieldClassName, restClassName].filter(Boolean).join(' ') || undefined}
           ref={ref}
-          {...rest}
+          {...linkRest}
         >
           {text}
           {children}

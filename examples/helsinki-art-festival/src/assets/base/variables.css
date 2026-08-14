@@ -1,54 +1,67 @@
 @theme {
-  --font-roboto: 'Roboto', 'sans-serif';
-  /* // abstract/vars /_colors: */
+  /* Typography — Helsinki Festival (Trio Grotesk / Van Condensed Pro) */
+  --font-heading: 'Trio Grotesk', ui-sans-serif, sans-serif;
+  --font-body: 'Van Condensed Pro', ui-sans-serif, sans-serif;
+  /* Alias kept for any leftover @apply font-roboto references */
+  --font-roboto: var(--font-body);
 
-  --color-main-color: #27272a;
+  --color-main-color: #000000;
 
-  /* //Backgrounds colors */
+  /* Backgrounds */
   --color-bg-basic-color: #ffffff;
-  --color-bg-light-gray: #f7f7f7;
-  --color-bg-lighter-gray: #fafafa;
-  --color-bg-light-gray-active: #dadada;
-  --color-bg-blue: #89c6cc;
-  --color-bg-blue-active: #15909c;
-  --color-bg-black: #000;
-  --color-bg-black-active: #3d3d3d;
+  --color-bg-hero: #e4e4e3;
+  --color-bg-light-gray: #e4e4e3;
+  --color-bg-lighter-gray: #f3f3f2;
+  --color-bg-light-gray-active: #d5d5d4;
+  --color-bg-footer: #c1e0df;
+  --color-bg-teal: #008676;
+  --color-bg-orange: #ff560f;
+  --color-bg-blue: #c1e0df;
+  --color-bg-blue-active: #008676;
+  --color-bg-black: #000000;
+  --color-bg-black-active: #1a1a1a;
   --color-page-bg-editor: none;
-  --color-bg-dark-gray: #262626;
-  --color-bg-submenu: #edebeb;
-  --color-bg-submenu-active: #f6f6f6;
-  /* //Text colors */
-  --color-text-white: #fff;
-  --color-text-heading-color: #222;
-  --color-text-basic: #747474;
-  --color-text-basic-active: #878787;
-  --color-text-blue: #89c6cc;
-  --color-text-blue-active: #15909c;
-  --color-text-red: #de232f;
-  /* //Border colors */
-  --color-border-gray: #d2d2d2;
-  --color-border-basic-color: #89c6cc;
+  --color-bg-dark-gray: #111111;
+  --color-bg-submenu: #e4e4e3;
+  --color-bg-submenu-active: #f3f3f2;
 
-  /* //Buttons colors */
-  --color-btn-green-light: #a0ce4e;
-  --color-btn-green: #92be43;
-  --color-btn-red-active: #c34e30;
-  --color-btn-red: #bc4526;
-  /* //other */
-  --color-promo-bg-hero: rgba(0, 0, 0, 0.5);
-  --color-menu-hover-color: #1b809e;
-  --color-menu-active-color: #176f89;
+  /* Text */
+  --color-text-white: #ffffff;
+  --color-text-heading-color: #000000;
+  --color-text-basic: #000000;
+  --color-text-basic-active: #333333;
+  --color-text-muted: #555555;
+  --color-text-blue: #008676;
+  --color-text-blue-active: #006b5f;
+  --color-text-red: #ed037c;
+  --color-text-accent: #ed037c;
 
-  /* // abstract/vars /_fontSizes: */
-  --text-font-small: 11px;
-  --text-font-normal: 13px;
-  --text-font-medium: 16px;
-  --text-font-big: 20px;
-  --text-font-extrabig: 24px;
+  /* Borders */
+  --color-border-gray: #cfcfce;
+  --color-border-basic-color: #000000;
+
+  /* Buttons / accents */
+  --color-btn-green-light: #008676;
+  --color-btn-green: #006b5f;
+  --color-btn-red-active: #c40268;
+  --color-btn-red: #ed037c;
+  --color-accent-pink: #ed037c;
+  --color-accent-orange: #ff560f;
+  --color-accent-teal: #008676;
+  --color-promo-bg-hero: rgba(0, 0, 0, 0.45);
+  --color-menu-hover-color: #ed037c;
+  --color-menu-active-color: #000000;
+
+  /* Font sizes */
+  --text-font-small: 13px;
+  --text-font-normal: 16px;
+  --text-font-medium: 18px;
+  --text-font-big: 25px;
+  --text-font-extrabig: 50px;
   --text-navigation-font-basic: 18px;
-  --text-navigation-font-basic-submenu: 14px;
+  --text-navigation-font-basic-submenu: 16px;
 
-  /* // breakpoints */
+  /* Breakpoints */
   --breakpoint-mobile: 380px;
   --breakpoint-mobile-horizontal: 640px;
   --breakpoint-mobile-large: 992px;

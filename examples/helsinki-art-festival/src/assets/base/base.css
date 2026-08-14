@@ -1,96 +1,38 @@
+@utility default-link-button {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--color-main-color);
+  font-family: var(--font-body);
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  background: var(--color-bg-basic-color);
+  color: var(--color-main-color);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  &:hover {
+    background: var(--color-main-color);
+    color: var(--color-text-white);
+    text-decoration: none;
+  }
+}
+
 .button-default,
 .default {
-  @apply default-link-button bg-bg-submenu-active text-text-basic;
+  @apply default-link-button;
 }
 
 .button-success,
 .success {
-  @apply default-link-button bg-btn-green-light text-text-white hover:text-text-white hover:bg-btn-green;
+  @apply default-link-button border-accent-teal bg-accent-teal text-text-white hover:bg-btn-green hover:text-text-white;
 }
 
 .button-warning,
 .warning {
-  @apply default-link-button bg-btn-red text-text-white hover:text-text-white hover:bg-btn-red-active;
-}
-
-/* base richtext */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply text-text-heading-color;
-}
-h1,
-h2 {
-  @apply m-[10px_0];
-}
-h3,
-h4,
-p {
-  @apply m-[5px_0];
-}
-h5,
-h6 {
-  @apply m-[5px_0_0];
-}
-strong {
-  @apply font-bold;
-}
-ul,
-ol {
-  @apply py-[5px] ml-[10px];
-}
-li {
-  @apply text-font-normal ml-[15px];
-}
-ul {
-  li {
-    @apply list-disc list-inside;
-  }
-}
-ol {
-  li {
-    @apply list-decimal list-inside;
-  }
-}
-a {
-  @apply text-text-red underline text-[1em] hover:text-text-basic-active;
-}
-table {
-  @apply h-auto! border-2 border-solid border-border-gray;
-  &,
-  tr,
-  th,
-  td {
-    @apply border-2 border-solid border-border-gray bg-bg-basic-color border-collapse align-middle;
-  }
-  tr,
-  th,
-  td {
-    @apply p-[5px];
-  }
-  caption {
-    @apply bg-bg-light-gray overflow-hidden text-font-big font-bold text-[1.2em] p-[10px] ml-0;
-  }
-  tr {
-    @apply border-none;
-  }
-  th,
-  td {
-    @apply border-t-2 border-l-2;
-  }
-  th {
-    @apply bg-bg-lighter-gray text-font-normal font-bold p-[7px];
-    &:first-child {
-      @apply border-l-0;
-    }
-  }
-  td {
-    &:first-child {
-      @apply border-l-0;
-    }
-  }
+  @apply default-link-button border-accent-pink bg-accent-pink text-text-white hover:bg-btn-red-active hover:text-text-white;
 }

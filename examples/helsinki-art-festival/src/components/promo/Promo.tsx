@@ -6,6 +6,7 @@ import {
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import StructuredData from 'components/structured-data/StructuredData';
 import { getFieldValue } from 'lib/component-props';
+import { cn, componentShell } from 'lib/utils';
 import { buildProductJsonLd } from 'src/lib/structured-data/schema';
 import { PromoContentProps, PromoFields as Fields, PromoProps } from './promo.props';
 
@@ -15,19 +16,23 @@ const PromoContent = (props: PromoContentProps): JSX.Element => {
 
   const Wrapper = ({ children }: { children: JSX.Element }): JSX.Element => (
     <article
-      className={`component promo ${styles}`}
+      className={cn(
+        componentShell,
+        'promo group overflow-hidden bg-transparent p-0',
+        styles
+      )}
       id={id}
       itemScope
       itemType="https://schema.org/Product"
     >
-      <div className="component-content">{children}</div>
+      <div className="component-content flex h-full flex-col">{children}</div>
     </article>
   );
 
   if (!fields) {
     return (
       <Wrapper>
-        <span className="is-empty-hint">Promo</span>
+        <span className="is-empty-hint font-body text-lg">Promo</span>
       </Wrapper>
     );
   }
@@ -39,10 +44,13 @@ const PromoContent = (props: PromoContentProps): JSX.Element => {
   return (
     <Wrapper>
       <>
-        <figure className="field-promoicon" itemProp="image">
+        <figure
+          className="field-promoicon mb-4 aspect-[16/10] w-full overflow-hidden bg-bg-hero [&_img]:h-full [&_img]:w-full [&_img]:object-cover"
+          itemProp="image"
+        >
           <ContentSdkImage field={promoIconField} />
         </figure>
-        <div className="promo-text" itemProp="description">
+        <div className="promo-text flex flex-1 flex-col gap-3" itemProp="description">
           {renderText(fields)}
         </div>
         <StructuredData
@@ -68,11 +76,16 @@ export const Default = (props: PromoProps): JSX.Element => {
 
     return (
       <>
-        <div className="field-promotext">
+        <div className="field-promotext font-heading text-xl font-bold leading-snug text-black [&_a]:font-bold [&_a]:text-black [&_a]:no-underline [&_a]:hover:underline [&_h1]:text-xl [&_h2]:text-xl [&_h3]:text-xl [&_p]:my-1 [&_p]:font-body [&_p]:text-base [&_p]:font-normal">
           <ContentSdkRichText field={promoTextField} />
         </div>
-        <div className="field-promolink">
-          {promoLinkField ? <CompatibleLink field={promoLinkField} /> : null}
+        <div className="field-promolink mt-auto">
+          {promoLinkField ? (
+            <CompatibleLink
+              field={promoLinkField}
+              className="font-body text-base font-bold text-black underline underline-offset-4 hover:text-accent-pink"
+            />
+          ) : null}
         </div>
       </>
     );
@@ -84,10 +97,10 @@ export const Default = (props: PromoProps): JSX.Element => {
 export const WithText = (props: PromoProps): JSX.Element => {
   const renderText = (fields: Fields) => (
     <>
-      <div className="field-promotext">
+      <div className="field-promotext font-heading text-xl font-bold text-black">
         <ContentSdkRichText className="promo-text" field={getFieldValue(fields.PromoText)} />
       </div>
-      <div className="field-promotext">
+      <div className="field-promotext font-body text-base text-black">
         <ContentSdkRichText className="promo-text" field={getFieldValue(fields.PromoText2)} />
       </div>
     </>
