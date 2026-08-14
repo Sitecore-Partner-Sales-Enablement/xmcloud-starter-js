@@ -6,7 +6,8 @@ import { Link as ContentSdkLink } from '@sitecore-content-sdk/nextjs';
 
 const FILE_EXTENSION_MATCHER = /^\/.*\.\w+$/;
 
-type CompatibleLinkProps = React.ComponentProps<typeof ContentSdkLink> & {
+type CompatibleLinkProps = Omit<React.ComponentProps<typeof ContentSdkLink>, 'field'> & {
+  field?: React.ComponentProps<typeof ContentSdkLink>['field'];
   internalLinkMatcher?: RegExp;
 };
 
@@ -78,7 +79,17 @@ export const CompatibleLink = forwardRef<HTMLAnchorElement, CompatibleLinkProps>
     }
   }
 
-  return <ContentSdkLink {...props} ref={ref} />;
+  return (
+    <ContentSdkLink
+      field={field}
+      editable={editable}
+      showLinkTextWithChildrenPresent={showLinkTextWithChildrenPresent}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </ContentSdkLink>
+  );
 });
 
 CompatibleLink.displayName = 'CompatibleLink';
