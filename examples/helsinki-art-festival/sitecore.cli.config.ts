@@ -25,6 +25,8 @@ export default defineCliConfig({
       'src/components/content-sdk/*',
       '**/*.props.ts',
       '**/*.props.tsx',
+      '**/festival-logo.ts',
+      '**/footer-logos.ts',
     ],
   },
 });

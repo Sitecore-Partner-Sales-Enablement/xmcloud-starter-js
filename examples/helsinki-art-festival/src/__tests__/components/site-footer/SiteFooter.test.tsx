@@ -84,12 +84,11 @@ describe('SiteFooter Component should', () => {
     expect(screen.getByText('Facebook')).toBeInTheDocument();
   });
 
-  it('render default Helsinki and Sustainable Travel Finland logos', () => {
+  it('render default Helsinki and Sustainable Travel Finland logos as data URIs', () => {
     render(<SiteFooter {...mockSiteFooterPropsEmpty} />);
-    expect(screen.getByAltText('Helsinki')).toHaveAttribute('src', '/logos/helsinki.svg');
-    expect(screen.getByAltText('Sustainable Travel Finland')).toHaveAttribute(
-      'src',
-      '/logos/sustainable-travel-finland.png'
+    expect(screen.getByAltText('Helsinki').getAttribute('src')).toMatch(/^data:image\/svg\+xml;base64,/);
+    expect(screen.getByAltText('Sustainable Travel Finland').getAttribute('src')).toMatch(
+      /^data:image\/png;base64,/
     );
   });
 

@@ -206,6 +206,70 @@ header .navigation {
   line-height: 40px;
 }
 
+/* TimePromo favourite button — match helsinkifestival.fi event CTA */
+.time-promo .time-promo__favourite,
+.time-promo button.time-promo__favourite {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 0;
+  background-color: #000000;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 300ms cubic-bezier(0.85, 0, 0.15, 1), color 300ms cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.time-promo .time-promo__favourite:hover,
+.time-promo .time-promo__favourite:focus,
+.time-promo button.time-promo__favourite:hover,
+.time-promo button.time-promo__favourite:focus {
+  background-color: #c1e0df;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.time-promo .time-promo__favourite svg {
+  fill: currentColor;
+  color: #ffffff;
+}
+
+/* StandardPromo CTA — match helsinkifestival.fi hero btn-invert */
+.standard-promo .standard-promo__cta,
+.standard-promo a.standard-promo__cta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  background-color: #000000;
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transition: background-color 300ms cubic-bezier(0.85, 0, 0.15, 1), color 300ms cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.standard-promo .standard-promo__cta:hover,
+.standard-promo .standard-promo__cta:focus,
+.standard-promo a.standard-promo__cta:hover,
+.standard-promo a.standard-promo__cta:focus {
+  background-color: #c1e0df;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
 /* Page titles in main — Night of the Arts hero band */
 main .title,
 #content .title {

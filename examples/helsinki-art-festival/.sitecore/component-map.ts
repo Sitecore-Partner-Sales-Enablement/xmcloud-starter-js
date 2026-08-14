@@ -7,8 +7,11 @@ import { Form } from '@sitecore-content-sdk/nextjs';
 import * as TopNavigation from 'src/components/top-navigation/TopNavigation';
 import * as festivallogo from 'src/components/top-navigation/festival-logo';
 import * as Title from 'src/components/title/Title';
+import * as TimePromo from 'src/components/time-promo/TimePromo';
 import * as StructuredData from 'src/components/structured-data/StructuredData';
+import * as StandardPromo from 'src/components/standard-promo/StandardPromo';
 import * as SiteFooter from 'src/components/site-footer/SiteFooter';
+import * as footerlogos from 'src/components/site-footer/footer-logos';
 import * as RowSplitter from 'src/components/row-splitter/RowSplitter';
 import * as RichText from 'src/components/rich-text/RichText';
 import * as Promo from 'src/components/promo/Promo';
@@ -29,8 +32,11 @@ export const componentMap = new Map<string, NextjsContentSdkComponent>([
   ['TopNavigation', { ...TopNavigation, componentType: 'client' }],
   ['festival-logo', { ...festivallogo }],
   ['Title', { ...Title }],
+  ['TimePromo', { ...TimePromo }],
   ['StructuredData', { ...StructuredData }],
+  ['StandardPromo', { ...StandardPromo, componentType: 'client' }],
   ['SiteFooter', { ...SiteFooter, componentType: 'client' }],
+  ['footer-logos', { ...footerlogos }],
   ['RowSplitter', { ...RowSplitter }],
   ['RichText', { ...RichText }],
   ['Promo', { ...Promo }],

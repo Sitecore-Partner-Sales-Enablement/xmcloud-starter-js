@@ -11,6 +11,7 @@ import {
   SiteFooterLinkItem,
   SiteFooterProps,
 } from './site-footer.props';
+import { HELSINKI_LOGO_DATA_URI, STF_LOGO_DATA_URI } from './footer-logos';
 
 const FALLBACK_PRIMARY = [
   { text: 'Info', href: '/info' },
@@ -35,8 +36,6 @@ const FALLBACK_SOCIAL = [
   { text: 'TikTok', href: 'https://www.tiktok.com/@helsinkifestival', network: 'tiktok' },
 ];
 
-const HELSINKI_LOGO_SRC = '/logos/helsinki.svg';
-const STF_LOGO_SRC = '/logos/sustainable-travel-finland.png';
 const STF_LOGO_HREF =
   'https://www.visitfinland.fi/en/liiketoiminnan-kehittaminen/vastuullinen-matkailu/sustainable-travel-finland';
 
@@ -190,17 +189,41 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
       id={id}
     >
       <div className="container mx-auto grid w-full max-w-[1250px] grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-        {/* Column 1 — logos */}
+        {/* Column 1 — logos (data-URI fallbacks so Pages editor cannot break paths) */}
         <div className="footer-logos flex flex-col gap-6">
           <div className="footer-logo">
             {partnerLogoField?.value?.src ? (
               partnerLogoLinkField?.value?.href ? (
                 <CompatibleLink field={partnerLogoLinkField} className="inline-flex no-underline">
-                  <ContentSdkImage
-                    field={partnerLogoField}
-                    className="h-[46px] w-auto max-w-[100px] object-contain"
-                  />
+                  {isEditing ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={String(partnerLogoField.value.src)}
+                      alt={
+                        typeof partnerLogoField.value.alt === 'string'
+                          ? partnerLogoField.value.alt
+                          : 'Helsinki'
+                      }
+                      className="h-[46px] w-auto max-w-[100px] object-contain"
+                    />
+                  ) : (
+                    <ContentSdkImage
+                      field={partnerLogoField}
+                      className="h-[46px] w-auto max-w-[100px] object-contain"
+                    />
+                  )}
                 </CompatibleLink>
+              ) : isEditing ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={String(partnerLogoField.value.src)}
+                  alt={
+                    typeof partnerLogoField.value.alt === 'string'
+                      ? partnerLogoField.value.alt
+                      : 'Helsinki'
+                  }
+                  className="h-[46px] w-auto max-w-[100px] object-contain"
+                />
               ) : (
                 <ContentSdkImage
                   field={partnerLogoField}
@@ -210,7 +233,7 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={HELSINKI_LOGO_SRC}
+                src={HELSINKI_LOGO_DATA_URI}
                 alt="Helsinki"
                 width={100}
                 height={46}
@@ -228,11 +251,35 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <ContentSdkImage
-                    field={certificationLogoField}
-                    className="h-auto w-[100px] object-contain"
-                  />
+                  {isEditing ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={String(certificationLogoField.value.src)}
+                      alt={
+                        typeof certificationLogoField.value.alt === 'string'
+                          ? certificationLogoField.value.alt
+                          : 'Sustainable Travel Finland'
+                      }
+                      className="h-auto w-[100px] object-contain"
+                    />
+                  ) : (
+                    <ContentSdkImage
+                      field={certificationLogoField}
+                      className="h-auto w-[100px] object-contain"
+                    />
+                  )}
                 </CompatibleLink>
+              ) : isEditing ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={String(certificationLogoField.value.src)}
+                  alt={
+                    typeof certificationLogoField.value.alt === 'string'
+                      ? certificationLogoField.value.alt
+                      : 'Sustainable Travel Finland'
+                  }
+                  className="h-auto w-[100px] object-contain"
+                />
               ) : (
                 <ContentSdkImage
                   field={certificationLogoField}
@@ -248,7 +295,7 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={STF_LOGO_SRC}
+                  src={STF_LOGO_DATA_URI}
                   alt="Sustainable Travel Finland"
                   width={160}
                   height={52}

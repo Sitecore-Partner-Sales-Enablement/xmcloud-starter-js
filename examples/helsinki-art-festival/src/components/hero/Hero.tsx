@@ -81,8 +81,9 @@ export const Default = ({ params, fields, page }: HeroProps): JSX.Element => {
         </div>
       </header>
 
-      {/* Image overlaps the grey→white transition (HF has-image pattern) */}
-      <figure className="event-hero__image relative z-10 mx-auto mb-[60px] -mt-[210px] w-full max-w-[1410px] px-4 md:px-8">
+      {/* Image overlaps the grey→white transition (HF has-image pattern).
+          Width matches event container content: max 1440px with 15px side padding → 1410px image. */}
+      <figure className="event-hero__image relative z-10 mx-auto mb-[60px] -mt-[210px] w-full max-w-[1440px] px-[15px]">
         <div className="overflow-hidden [&_img]:h-auto [&_img]:w-full [&_img]:object-cover">
           {hasSitecoreImage ? (
             <ContentSdkImage
