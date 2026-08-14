@@ -139,7 +139,7 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
           href: item.href,
         }));
 
-  const displaySocial =
+  const displaySocial: Array<ResolvedFooterLink & { network?: string }> =
     socialLinks.length > 0
       ? socialLinks.map((item) => ({
           ...item,
@@ -147,7 +147,7 @@ export const Default = ({ params, fields, page }: SiteFooterProps): JSX.Element 
         }))
       : FALLBACK_SOCIAL.map((item, index) => ({
           id: `social-${index}`,
-          field: { value: { href: item.href, text: item.text } },
+          field: { value: { href: item.href, text: item.text } } as ResolvedFooterLink['field'],
           text: item.text,
           href: item.href,
           network: item.network,
