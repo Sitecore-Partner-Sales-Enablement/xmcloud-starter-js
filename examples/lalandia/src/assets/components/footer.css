@@ -1,0 +1,30 @@
+footer {
+  @apply max-mobile-large:pt-0;
+
+  .container-dark-background {
+    @apply bg-bg-dark-gray;
+  }
+
+  .contacts {
+    @apply text-[14px];
+
+    a {
+      @apply text-brand-lime no-underline hover:text-brand-yellow;
+    }
+
+    p,
+    span {
+      @apply text-text-white;
+    }
+  }
+
+  .indent-inner {
+    @apply p-[65px] max-mobile-large:p-[40px_0];
+  }
+
+  h2,
+  h3,
+  h4 {
+    @apply text-brand-lime;
+  }
+}

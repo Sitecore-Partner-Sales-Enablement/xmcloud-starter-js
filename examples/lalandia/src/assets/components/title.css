@@ -1,0 +1,13 @@
+.title {
+  @apply bg-transparent;
+
+  h1,
+  .field-title {
+    @apply border-b-[3px] border-solid border-brand-lime text-[28px] mb-[10px] text-text-heading-color leading-[normal] pb-[10px] block no-underline cursor-pointer hover:text-menu-hover-color font-bold;
+
+    > a,
+    > span {
+      @apply no-underline;
+    }
+  }
+}
