@@ -25,7 +25,10 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const { site, locale, path } = await params;
   const draft = await draftMode();
-  const baseUrl = getBaseUrl();
+  const headers = await nextHeaders();
+  const requestHost =
+    headers.get("x-forwarded-host") || headers.get("host") || undefined;
+  const baseUrl = getBaseUrl(requestHost);
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
@@ -33,7 +36,6 @@ export default async function Page({ params }: PageProps) {
   // Fetch the page data from Sitecore
   let page;
   if (draft.isEnabled) {
-    const headers = await nextHeaders();
     const previewData = client.getPreviewData(headers);
     if (isDesignLibraryPreviewData(previewData)) {
       page = await client.getDesignLibraryData(previewData);

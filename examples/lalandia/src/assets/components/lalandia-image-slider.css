@@ -1,0 +1,248 @@
+/* LalandiaImageSlider — mirrors live .slider-wrapper.slider-with-grey-arrows
+ * https://www.lalandia.dk/en/inspiration/waterpark
+ * Motion: horizontal translateX (.3s) + opacity crossfade on .active
+ * Nav icons: .icon-link-left / .icon-link-right (\E021 / \E022)
+ */
+
+/* Icon glyphs use shared LalandiaIcons data-URI font (see lalandia-icons-font.css) */
+
+.component.lalandia-image-slider,
+.lalandia-image-slider {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 20px 0 30px;
+  text-align: center;
+}
+
+.lalandia-image-slider__inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-image-slider__inner {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .lalandia-image-slider__inner {
+    /* Room for outer grey arrows (.outer-nav) */
+    padding: 0 4.5rem;
+  }
+}
+
+.lalandia-image-slider__frame {
+  position: relative;
+  width: 100%;
+}
+
+/* Live: .slider-inner.outer-nav.article */
+.lalandia-image-slider__viewport {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-image-slider__viewport {
+    padding-bottom: 40%;
+  }
+}
+
+/* Live: ul.slider — strip that slides via translateX */
+.lalandia-image-slider__track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.lalandia-image-slider__slide {
+  position: relative;
+  flex: 0 0 auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lalandia-image-slider__slide.is-active {
+  opacity: 1;
+}
+
+.lalandia-image-slider__slide img,
+.lalandia-image-slider__slide span,
+.lalandia-image-slider__slide picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+}
+
+.lalandia-image-slider__empty {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: #d9d9d9;
+  color: #666;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Live: .prev-btn / .next-btn inside .slider-inner.outer-nav */
+.lalandia-image-slider__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: block;
+  width: 1.1em;
+  height: 1em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #202020;
+  font-size: 1.875rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease-in-out;
+  backface-visibility: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lalandia-image-slider__nav:hover,
+.lalandia-image-slider__nav:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.lalandia-image-slider__nav--prev {
+  left: 0.46875rem;
+}
+
+.lalandia-image-slider__nav--next {
+  right: 0.46875rem;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-image-slider__nav {
+    font-size: 2.5rem;
+  }
+
+  .lalandia-image-slider__nav--prev {
+    left: 0;
+  }
+
+  .lalandia-image-slider__nav--next {
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* Live: .slider-inner.outer-nav .prev-btn / .next-btn */
+  .lalandia-image-slider__nav--prev {
+    left: -3.75rem;
+  }
+
+  .lalandia-image-slider__nav--next {
+    right: -3.75rem;
+  }
+}
+
+/* Live: .icon-link-left / .icon-link-right (not icon-arrow-*) */
+.lalandia-image-slider__icon-link {
+  display: inline-block;
+  font-family: 'LalandiaIcons', sans-serif;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  color: #202020;
+  speak: never;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lalandia-image-slider__icon-link--left::before {
+  content: '\E021';
+}
+
+.lalandia-image-slider__icon-link--right::before {
+  content: '\E022';
+}
+
+.lalandia-image-slider__edit-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.lalandia-image-slider__edit-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lalandia-image-slider__edit-label {
+  color: #202020;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.lalandia-image-slider__edit-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.lalandia-image-slider__edit-media img,
+.lalandia-image-slider__edit-media span,
+.lalandia-image-slider__edit-media picture {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.lalandia-image-slider__edit-hint {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
+  color: #666;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: left;
+}

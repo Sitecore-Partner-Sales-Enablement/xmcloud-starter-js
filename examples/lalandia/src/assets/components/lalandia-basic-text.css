@@ -1,0 +1,166 @@
+/* LalandiaBasicText — mirrors live .article__item-header + .article__item-text
+ * https://www.lalandia.dk/en/inspiration/waterpark
+ */
+
+/* .component { @apply py-0 } in container.css zeros padding — beat it with
+ * equal/higher specificity so vertical spacing actually renders (hero uses
+ * margin on __panel for the same reason). */
+.component.lalandia-basic-text,
+.lalandia-basic-text {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 35px;
+  padding: 30px 0 0;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  text-align: left;
+  color: #202020;
+}
+
+.lalandia-basic-text__inner {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-basic-text__inner {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .lalandia-basic-text__inner {
+    /* Match LalandiaImageSlider content width (arrow gutters) */
+    padding: 0 4.5rem;
+  }
+}
+
+/* Live: .article__item-header — Roboto 600, no uppercase (overrides global h3) */
+.lalandia-basic-text__title,
+.lalandia-basic-text h3.lalandia-basic-text__title {
+  margin: 0 0 0.5em;
+  padding: 0;
+  color: #202020 !important;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  line-height: 27px !important;
+  text-transform: none !important;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (min-width: 1024px) {
+  .lalandia-basic-text__title,
+  .lalandia-basic-text h3.lalandia-basic-text__title {
+    font-size: 19px !important;
+    line-height: 27px !important;
+  }
+}
+
+/* Live: .article__item-text p — 15/21 → 19/27 @ 1024 */
+.lalandia-basic-text__text {
+  margin: 0;
+  color: #202020;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lalandia-basic-text__body {
+  display: block;
+}
+
+.lalandia-basic-text.has-image .lalandia-basic-text__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-basic-text.has-image .lalandia-basic-text__body {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 1fr);
+    gap: 30px;
+  }
+
+  /* ImageLeft: image left, title + text together on the right */
+  .lalandia-basic-text.has-image.image-left .lalandia-basic-text__copy {
+    order: 2;
+  }
+
+  .lalandia-basic-text.has-image.image-left .lalandia-basic-text__image {
+    order: 1;
+  }
+}
+
+.lalandia-basic-text__copy {
+  min-width: 0;
+}
+
+.lalandia-basic-text__image {
+  margin: 0;
+  width: 100%;
+}
+
+.lalandia-basic-text__image img,
+.lalandia-basic-text__image span,
+.lalandia-basic-text__image picture {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .lalandia-basic-text__text {
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 27px;
+  }
+}
+
+.lalandia-basic-text__text p {
+  margin: 0 0 1em;
+  color: #202020 !important;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+  text-transform: none;
+}
+
+.lalandia-basic-text__text p:last-child {
+  margin-bottom: 0;
+}
+
+.lalandia-basic-text__text a {
+  color: #006eb9;
+  text-decoration: underline;
+}
+
+.lalandia-basic-text__text a:hover {
+  color: #028c98;
+}
+
+.lalandia-basic-text__text ul,
+.lalandia-basic-text__text ol {
+  list-style: none;
+  margin: 0.8em 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 300;
+}
+
+.lalandia-basic-text__text li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

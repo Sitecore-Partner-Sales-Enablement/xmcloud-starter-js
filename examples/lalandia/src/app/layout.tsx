@@ -1,12 +1,18 @@
 import "./globals.css";
-import { Roboto } from "next/font/google";
+import { Raleway, Roboto } from "next/font/google";
 
-// Configure the font
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["300", "400", "500", "600", "700", "900"],
   display: "swap",
   variable: "--font-roboto",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["300", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-raleway",
 });
 
 export default function RootLayout({
@@ -15,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={roboto.variable}>
+    <html lang="en" className={`${roboto.variable} ${raleway.variable}`}>
       <head>
         <link
           rel="preconnect"

@@ -1,0 +1,1118 @@
+/* Lalandia global header — mirrors https://www.lalandia.dk/en */
+
+.lalandia-header {
+  --lalandia-header-height: 60px;
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+}
+
+.lalandia-header__nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: var(--lalandia-header-height);
+  min-height: var(--lalandia-header-height);
+  padding: 0;
+  overflow: visible;
+  font-family: var(--font-lalandia);
+  color: #ffffff;
+  background: rgba(32, 32, 32, 0.65);
+  box-shadow: 0 0 24px 0 rgba(0, 27, 87, 0.3);
+  backdrop-filter: blur(2px);
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    height 0.6s ease-in-out;
+}
+
+.lalandia-header.is-scrolled .lalandia-header__nav,
+.lalandia-header.has-subnav .lalandia-header__nav {
+  background: rgba(32, 32, 32, 0.82);
+}
+
+.lalandia-header.has-subnav .lalandia-header__nav {
+  box-shadow: none;
+}
+
+/* Full-screen drawer when burger menu is open (<1150px) */
+.lalandia-header.is-mobile-open .lalandia-header__nav {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: rgba(32, 32, 32, 0.8);
+}
+
+@media only screen and (min-width: 690px) {
+  .lalandia-header.is-mobile-open .lalandia-header__nav {
+    background: rgba(32, 32, 32, 0.9);
+  }
+}
+
+.lalandia-header__wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: var(--lalandia-header-height);
+  min-height: var(--lalandia-header-height);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lalandia-header__menu {
+  display: none;
+  align-items: stretch;
+  gap: 0;
+  min-width: 0;
+  flex: 1;
+}
+
+.lalandia-header__menu-label {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 300;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+.lalandia-header__list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lalandia-header__item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+}
+
+.lalandia-header__item.has-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1px;
+  height: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+}
+
+.lalandia-header__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin: 0;
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: font-weight 0.15s ease;
+}
+
+.lalandia-header__item.has-divider .lalandia-header__link {
+  padding-right: 20px;
+}
+
+.lalandia-header__item.has-divider + .lalandia-header__item .lalandia-header__link {
+  padding-left: 20px;
+}
+
+.lalandia-header__link:hover,
+.lalandia-header__item.is-active .lalandia-header__link {
+  font-weight: 600;
+}
+
+/* Caret sits flush on the white submenu (1px overlap removes the dark hairline) */
+.lalandia-header__item.is-active .lalandia-header__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 6;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #ffffff transparent;
+  pointer-events: none;
+}
+
+/* Logo — left-aligned compact by default; centered hang on desktop */
+.lalandia-header__logo {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  width: auto;
+  padding: 12px 13.5px;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.lalandia-header__logo-link {
+  display: block;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 0;
+  text-decoration: none !important;
+}
+
+.lalandia-header__logo-img {
+  display: block;
+  width: 79px;
+  height: auto;
+}
+
+.lalandia-header__logo-img .lalandia-logo-svg,
+.lalandia-header__logo-img > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lalandia-header__tools {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 0;
+  margin-left: auto;
+}
+
+.lalandia-header__language {
+  position: relative;
+  display: none;
+  /* Fill the 60px bar so the dropdown hangs from the header bottom (live top: 62px) */
+  align-self: stretch;
+  margin: 0 10px;
+}
+
+.lalandia-header__language-button {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1.03px;
+  line-height: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.lalandia-header__language-button > .lalandia-header__language-code {
+  padding-left: 28px;
+  padding-right: 5px;
+  overflow: hidden;
+}
+
+/* Culture / globe — same glyph as lalandia.dk `.icon-culture` (\E016)
+ * Font-face lives in assets/fonts/lalandia-icons-font.css (data-URI) so editing
+ * preview <base href> cannot break /fonts/* requests.
+ */
+
+.lalandia-header__globe {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  color: #ffffff;
+  font-family: 'LalandiaIcons', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: never;
+  text-transform: none;
+  transform: translateY(-50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lalandia-header__globe::before {
+  content: '\E016';
+}
+
+.lalandia-header__language-button .lalandia-header__chevron {
+  width: 10px;
+  height: 8px;
+  margin-left: -2px;
+  flex-shrink: 0;
+}
+
+.lalandia-header__chevron {
+  width: 10px;
+  height: 8px;
+  transition: transform 0.2s ease;
+}
+
+.lalandia-header__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+/* Language dropdown — mirrors lalandia.dk
+ * `.nav__language .lang-selector .nav__sub-nav` + `.nav-item--dropdown .nav__sub-nav`
+ * (white panel, bottom radii only, width hugs the trigger). */
+.lalandia-header__language-list {
+  position: absolute;
+  /* Live: `.nav__language .nav__sub-nav { top: 62px }` under the 60px bar */
+  top: calc(100% + 2px);
+  left: -30%;
+  right: auto;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-width: calc(100% + 10px);
+  height: auto;
+  margin: 0;
+  padding: 10px 15px;
+  list-style: none;
+  background-color: #ffffff;
+  color: #202020;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(32, 32, 32, 0.2);
+}
+
+.lalandia-header__language-list::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #ffffff transparent;
+}
+
+.lalandia-header__language-list > li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  list-style: none;
+}
+
+.lalandia-header__language-list > li:first-child {
+  padding-top: 0;
+}
+
+.lalandia-header__language-list > li:last-child {
+  padding-bottom: 0;
+}
+
+.lalandia-header__language-list a {
+  display: block;
+  padding: 10px;
+  color: #202020 !important;
+  font-family: var(--font-lalandia);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.03px;
+  line-height: 20px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: font-weight 0.15s ease;
+}
+
+.lalandia-header__language-list a:hover {
+  background: transparent;
+  color: #202020 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+/* Compact Book — centered under the 60px bar (<1150px), like nav.small .book */
+.lalandia-header__compact-book {
+  position: absolute;
+  left: 50%;
+  bottom: -17.5%;
+  z-index: 11;
+  display: block;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.lalandia-header__compact-book .lalandia-header__book {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: 111px;
+  height: 38px;
+}
+
+/* Burger — matches lalandia.dk .menu / .menu__line */
+.lalandia-header__burger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 24px 20px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-shadow: 1px 1px rgba(32, 32, 32, 0.2);
+}
+
+.lalandia-header__burger-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-bottom: 2px;
+  background-color: #ffffff;
+  transition: all 0.6s ease-in-out;
+}
+
+.lalandia-header__burger-line:last-child {
+  margin-bottom: 0;
+}
+
+.lalandia-header.is-mobile-open .lalandia-header__burger-line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.lalandia-header.is-mobile-open .lalandia-header__burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.lalandia-header.is-mobile-open .lalandia-header__burger-line:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* White subnav strip — full viewport width under the fixed bar */
+.lalandia-header__subnav {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #202020;
+  box-shadow: 0 8px 14px rgba(32, 32, 32, 0.18);
+  opacity: 0;
+  max-height: 0;
+  overflow: visible;
+  transition: opacity 0.25s ease;
+}
+
+.lalandia-header__subnav.is-open {
+  display: block;
+  opacity: 1;
+  max-height: none;
+}
+
+.lalandia-header__subnav-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 55px;
+  margin: 0 auto;
+  padding: 0 130px 0 16px;
+  box-sizing: border-box;
+}
+
+.lalandia-header__sub-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.lalandia-header__sub-item {
+  position: relative;
+  list-style: none;
+}
+
+.lalandia-header__sub-item > a,
+.lalandia-header__sub-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border: 0;
+  background: transparent;
+  color: #202020 !important;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none !important;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: font-weight 0.15s ease;
+}
+
+.lalandia-header__sub-item > a:hover,
+.lalandia-header__sub-trigger:hover,
+.lalandia-header__sub-item.is-open .lalandia-header__sub-trigger {
+  color: #202020 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+/* Nested dropdown (e.g. Go exploring) — mirrors lalandia.dk `.nav-item--dropdown .nav__sub-nav` */
+.lalandia-header__nested-list {
+  position: absolute;
+  top: 52px;
+  left: -15px;
+  right: auto;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  min-width: calc(100% + 10px);
+  height: auto;
+  margin: 0;
+  padding: 10px 15px;
+  list-style: none;
+  list-style-type: none;
+  background-color: #f0f0f0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(32, 32, 32, 0.2);
+}
+
+.lalandia-header__nested-list::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #f0f0f0 transparent;
+}
+
+.lalandia-header__nested-list > li {
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  list-style: none;
+  list-style-type: none;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.lalandia-header__nested-list > li::marker {
+  content: none;
+  display: none;
+}
+
+.lalandia-header__nested-list > li:first-child {
+  padding-top: 0;
+}
+
+.lalandia-header__nested-list > li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.lalandia-header__nested-list a {
+  display: block;
+  padding: 10px;
+  color: #202020 !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: font-weight 0.15s ease;
+}
+
+.lalandia-header__nested-list a:hover {
+  background: transparent;
+  color: #202020 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+/* Book CTA — matches lalandia.dk submenu (hangs slightly below the white bar) */
+.lalandia-header__subnav .lalandia-header__book {
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  z-index: 5;
+}
+
+.lalandia-header__book {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 111px;
+  height: 40px;
+  margin: 0;
+  padding: 10px;
+  border: none !important;
+  border-radius: 5em;
+  background-color: #b9df23;
+  background: linear-gradient(to bottom, #b9df23 0%, #76a70c 100%);
+  box-shadow: 0 2px #547709;
+  color: #ffffff !important;
+  font-family: var(--font-raleway), 'Raleway', var(--font-lalandia), sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: normal;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(32, 32, 32, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.lalandia-header__book::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(32, 32, 32, 0);
+  border-radius: 5em;
+  pointer-events: none;
+  transition: background 0.2s ease-in-out;
+}
+
+.lalandia-header__book:hover {
+  background-color: #b9df23;
+  background: linear-gradient(to bottom, #b9df23 0%, #76a70c 100%);
+  color: #ffffff !important;
+  filter: none;
+}
+
+.lalandia-header__book:hover::after {
+  background: rgba(32, 32, 32, 0.2);
+}
+
+/* Mobile / compact drawer — mirrors lalandia.dk .small-nav (see screenshot) */
+.lalandia-header__mobile {
+  position: absolute;
+  top: var(--lalandia-header-height);
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: calc(100% - var(--lalandia-header-height));
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 35px 30px 85px;
+  box-sizing: border-box;
+  color: #ffffff;
+  text-align: left;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  transform: translateY(-100vh);
+  transition: transform 0.6s ease-in-out;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.lalandia-header.is-mobile-open .lalandia-header__mobile,
+.lalandia-header__mobile.is-open {
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+
+@media screen and (orientation: portrait) and (min-height: 750px) {
+  .lalandia-header__mobile {
+    padding-bottom: 120px;
+  }
+}
+
+.lalandia-header__mobile-panel {
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Centre destination buttons */
+.lalandia-header__mobile-centers {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 5px;
+}
+
+.lalandia-header__mobile-center {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 14px 48px 14px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000 !important;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: left;
+  text-decoration: none !important;
+  box-sizing: border-box;
+}
+
+.lalandia-header__mobile-center:last-child {
+  margin-bottom: 0;
+}
+
+.lalandia-header__mobile-center:hover {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.lalandia-header__mobile-center-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000000;
+  color: #ffffff;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.lalandia-header__mobile-center-arrow .lalandia-header__icon-arrow {
+  display: block;
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 1;
+  transform: rotate(-90deg);
+}
+
+/* Icon font glyphs */
+.lalandia-header__icon-arrow {
+  display: inline-block;
+  font-family: 'LalandiaIcons', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: never;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lalandia-header__icon-arrow::before {
+  content: '\E003';
+}
+
+.lalandia-header__icon-search {
+  display: block;
+  font-family: 'LalandiaIcons', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  color: #ffffff;
+  speak: never;
+  transform: scaleX(-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lalandia-header__icon-search::before {
+  content: '\E030';
+}
+
+/* Accordion list */
+.lalandia-header__mobile-accordion {
+  position: relative;
+  z-index: 1;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.lalandia-header__mobile-row {
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.lalandia-header__mobile-row a {
+  display: block;
+  padding: 12.5px 20px;
+  margin: 0;
+  color: #ffffff !important;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.055em;
+  line-height: 21px;
+  text-align: left;
+  text-decoration: none !important;
+  border-radius: 8px;
+}
+
+.lalandia-header__mobile-row a:hover {
+  background: rgba(0, 0, 0, 0.28);
+  text-decoration: none !important;
+}
+
+.lalandia-header__mobile-details {
+  margin: 0;
+}
+
+.lalandia-header__mobile-details > summary {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.lalandia-header__mobile-details > summary::-webkit-details-marker,
+.lalandia-header__mobile-details > summary::marker {
+  display: none;
+  content: '';
+}
+
+.lalandia-header__mobile-details-label {
+  display: block;
+  flex-grow: 1;
+  margin: 4px 45px 4px 0;
+  padding: 8.5px 20px;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.055em;
+  line-height: 21px;
+  text-align: left;
+  border-radius: 20px;
+  transition: background 0.15s ease;
+}
+
+.lalandia-header__mobile-details > summary:hover .lalandia-header__mobile-details-label,
+.lalandia-header__mobile-details[open] > summary .lalandia-header__mobile-details-label {
+  background: rgba(0, 0, 0, 0.28);
+  font-weight: 500;
+}
+
+.lalandia-header__mobile-details-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  color: #ffffff;
+  font-size: 12px;
+  transform: translateY(-50%);
+  transition: transform 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.lalandia-header__mobile-details[open] > summary .lalandia-header__mobile-details-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.lalandia-header__mobile-subitems {
+  display: block;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  list-style: none;
+}
+
+.lalandia-header__mobile-subitem {
+  display: block;
+  padding: 12.5px 20px;
+  margin: 0;
+  color: #ffffff !important;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.055em;
+  line-height: 21px;
+  text-align: left;
+  text-decoration: none !important;
+  list-style: none;
+}
+
+.lalandia-header__mobile-subitem:hover {
+  font-weight: 500;
+  text-decoration: none !important;
+}
+
+/* Language + search tools */
+.lalandia-header__mobile-tools {
+  margin: 0;
+  padding: 0;
+}
+
+.lalandia-header__mobile-lang {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.lalandia-header__mobile-lang-globe {
+  position: absolute !important;
+  top: 50% !important;
+  left: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  margin-top: -1px;
+  font-size: 18px !important;
+  transform: translateY(-50%) !important;
+  color: #ffffff;
+}
+
+.lalandia-header__mobile-lang select {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  color: #ffffff;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 21px;
+  letter-spacing: 0.055em;
+  text-indent: 30px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.lalandia-header__mobile-lang select:focus {
+  outline: none;
+}
+
+.lalandia-header__mobile-lang select option {
+  color: #202020;
+  text-indent: 0;
+  padding: 5px;
+}
+
+.lalandia-header__mobile-lang-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  color: #ffffff;
+  font-size: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Search pill */
+.lalandia-header__mobile-search {
+  padding: 15px 0;
+}
+
+.lalandia-header__mobile-search-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.lalandia-header__mobile-search-input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 10px 48px 10px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #ffffff;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 21px;
+  text-indent: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lalandia-header__mobile-search-input::placeholder {
+  color: #ffffff;
+  opacity: 1;
+  text-align: left;
+}
+
+.lalandia-header__mobile-search-input::-webkit-search-decoration,
+.lalandia-header__mobile-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.lalandia-header__mobile-search-btn {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  display: block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+body.lalandia-header-mobile-open {
+  overflow: hidden;
+}
+
+/* Desktop (≥1150px) — full nav, centered hanging logo; hide compact Book + burger */
+@media screen and (min-width: 1150px) {
+  .lalandia-header.is-mobile-open .lalandia-header__nav {
+    height: var(--lalandia-header-height);
+    background: rgba(32, 32, 32, 0.65);
+  }
+
+  .lalandia-header.is-scrolled.is-mobile-open .lalandia-header__nav,
+  .lalandia-header.has-subnav .lalandia-header__nav {
+    background: rgba(32, 32, 32, 0.82);
+  }
+
+  .lalandia-header__wrapper {
+    max-width: 1440px;
+    padding: 0 20px;
+    /* Stretch so top-nav links fill the 60px bar and the caret sits flush on the submenu */
+    align-items: stretch;
+  }
+
+  .lalandia-header__menu {
+    display: flex;
+    align-self: stretch;
+  }
+
+  .lalandia-header__tools {
+    align-self: stretch;
+    margin-left: auto;
+  }
+
+  .lalandia-header__language {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  .lalandia-header__language-button {
+    font-size: 13px;
+  }
+
+  .lalandia-header__compact-book {
+    display: none;
+  }
+
+  .lalandia-header__burger {
+    display: none;
+  }
+
+  .lalandia-header__mobile {
+    display: none !important;
+  }
+
+  /* Centered hanging logo (lalandia.dk .nav__logo) */
+  .lalandia-header__logo {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    z-index: 3;
+    width: 150px;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+
+  .lalandia-header__logo.is-compact {
+    top: 7.5px;
+    width: 100px;
+  }
+
+  .lalandia-header__logo-img {
+    width: 100%;
+  }
+
+  .lalandia-header__menu-label {
+    font-size: 15px;
+  }
+
+  .lalandia-header__link {
+    font-size: 14px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  /* Caret flush with the top edge of the white submenu */
+  .lalandia-header__item.is-active .lalandia-header__link::after {
+    bottom: -1px;
+  }
+
+  .lalandia-header__subnav-inner {
+    padding: 0 130px 0 20px;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .lalandia-header__link {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .lalandia-header__language-button {
+    font-size: 15px;
+  }
+}

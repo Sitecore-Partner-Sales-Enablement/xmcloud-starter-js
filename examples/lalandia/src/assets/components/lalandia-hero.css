@@ -1,0 +1,212 @@
+/* Lalandia page hero — mirrors https://www.lalandia.dk/en/inspiration/waterpark
+ * Structure: full-bleed .hero image + overlapping white .information-menu panel
+ */
+
+/* Beat shared `.component { px-[8px] }` so the image is edge-to-edge */
+.component.lalandia-hero,
+.lalandia-hero {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 30px;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  text-align: left;
+}
+
+.lalandia-hero__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 65vh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #9ec6dc;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (orientation: landscape) {
+  .lalandia-hero__media {
+    height: 75vh;
+  }
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-hero__media {
+    height: 75vh;
+    max-height: 710px;
+  }
+}
+
+@media screen and (min-width: 690px) and (orientation: portrait) {
+  .lalandia-hero__media {
+    height: 50vh;
+    max-height: 400px;
+  }
+}
+
+/* Sitecore Image field chrome — full bleed but invisible (cover bg is the visual) */
+.lalandia-hero__media-edit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  /* Keep clickable for Pages editor field chrome */
+  pointer-events: auto;
+}
+
+.lalandia-hero__media-edit img,
+.lalandia-hero__media-edit span,
+.lalandia-hero__media-edit picture {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+}
+
+.lalandia-hero__img-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  padding: 8px 14px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #202020;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* White panel overlapping the bottom of the hero image */
+.lalandia-hero__panel {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: -100px auto 35px;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-hero__panel {
+    margin: -75px auto 35px;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .lalandia-hero__panel {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .lalandia-hero__panel {
+    margin: -100px auto 35px;
+  }
+}
+
+.lalandia-hero__panel-inner {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 20px 25px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #202020;
+  text-align: left;
+  min-height: 150px;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-hero__panel-inner {
+    padding: 30px 40px;
+  }
+}
+
+/* Live: title/body sit in medium-8 column inside the white bar */
+.lalandia-hero__copy {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 690px) {
+  .lalandia-hero__copy {
+    max-width: 66.666%;
+  }
+}
+
+/*
+ * Live: h1 uses Raleway 900 + uppercase; .small-header sets size
+ * (24/28 → 36/42 from 1024px).
+ */
+.lalandia-hero__title,
+.lalandia-hero h1.lalandia-hero__title {
+  margin: 0 0 0.3em;
+  padding: 0;
+  color: #202020 !important;
+  font-family: var(--font-raleway), 'Raleway', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  line-height: 28px !important;
+  letter-spacing: normal;
+  text-transform: uppercase !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (min-width: 1024px) {
+  .lalandia-hero__title,
+  .lalandia-hero h1.lalandia-hero__title {
+    font-size: 36px !important;
+    line-height: 42px !important;
+  }
+}
+
+.lalandia-hero__text {
+  margin: 0;
+  color: #202020;
+  font-family: var(--font-lalandia), 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 21px;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media screen and (min-width: 1024px) {
+  .lalandia-hero__text {
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 27px;
+  }
+}
+
+.lalandia-hero__text p {
+  margin: 0;
+  color: #202020;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-transform: none;
+}
+
+.lalandia-hero__text p + p {
+  margin-top: 0.75em;
+}
+
+.lalandia-hero__text a {
+  color: #202020;
+  text-decoration: underline;
+}

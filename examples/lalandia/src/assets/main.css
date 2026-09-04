@@ -13,12 +13,3 @@
 /* responsive classes are in base/tailwind-bootstrap-grid */
 @source inline("col-{1..12}");
 @source inline("offset-{1..12}");
-
-/* Lalandia atmosphere — soft aqua wash behind content, white cards sit on top */
-body {
-  background-color: var(--color-bg-basic-color);
-  background-image:
-    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(60, 195, 213, 0.12), transparent 55%),
-    radial-gradient(ellipse 80% 40% at 100% 100%, rgba(185, 223, 35, 0.1), transparent 50%);
-  background-attachment: fixed;
-}

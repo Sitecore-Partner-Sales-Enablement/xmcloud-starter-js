@@ -1,6 +1,12 @@
+@import '../fonts/lalandia-icons-font.css';
 @import './layout.css';
 @import './footer.css';
-@import './header.css';
+@import './lalandia-header.css';
+@import './lalandia-footer.css';
+@import './lalandia-hero.css';
+@import './lalandia-basic-text.css';
+@import './lalandia-image-slider.css';
+@import './lalandia-inspiration.css';
 @import './promo.css';
 @import './image.css';
 @import './container.css';

@@ -87,10 +87,13 @@ export const config = {
    * 3. /sitecore/api (Sitecore API routes)
    * 4. /- (Sitecore media)
    * 5. /healthz (Health check)
-   * 7. all root files inside /public
+   * 6. Root public files (favicon, logos)
+   * 7. Static files under /public (folders + any path with a file extension)
+   *    Without this, multisite rewrite prefixes /lalandia/… in Pages preview
+   *    and assets like the sky wallpaper / footer boy 404.
    */
   matcher: [
     '/',
-    '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|favicon.ico|sc_logo.svg|ai/).*)',
+    '/((?!api/|\\.well-known/|sitemap|robots|llms|_next/|healthz|sitecore/api/|-/|favicon\\.ico|sc_logo\\.svg|lalandia-logo\\.svg|ai/|page-backgrounds/|footer/|hero/|slider/|fonts/|.*\\..*).*)',
   ],
 };

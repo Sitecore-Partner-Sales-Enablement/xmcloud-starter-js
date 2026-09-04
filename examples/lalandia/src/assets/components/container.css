@@ -83,30 +83,6 @@
 
 /* container */
 
-body {
-  @apply font-roboto text-main-color;
-}
-
 .container {
   @apply min-[1400px]:max-w-[1250px];
-}
-
-main {
-  @apply max-mobile-large:pt-0 max-mobile-large:mb-0;
-
-  .main-header {
-    @apply mt-[55px] mb-[30px] max-mobile-large:mb-0 max-mobile-large:mt-[10px];
-
-    h4 {
-      @apply text-[50px] font-medium leading-[70px] max-mobile-large:text-[24px] max-mobile-large:leading-[32px];
-    }
-  }
-
-  .main-news-header {
-    @apply mt-[60px] max-mobile-large:pb-[35px];
-
-    h2 {
-      @apply text-[36px] leading-[43px] max-mobile-large:mt-0 max-mobile-large:text-[18px] max-mobile-large:leading-[22px];
-    }
-  }
 }
