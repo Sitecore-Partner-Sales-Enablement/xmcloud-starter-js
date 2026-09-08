@@ -11,7 +11,11 @@ import {
 } from "src/lib/structured-data/schema";
 import StructuredData from "src/components/structured-data/StructuredData";
 import type { JsonLdValue } from "src/lib/structured-data/jsonld";
-import { getBaseUrl, resolvePublicAssetUrl } from "src/lib/utils";
+import { getBaseUrl } from "src/lib/utils";
+import {
+  LALANDIA_SKY_BG_PATH,
+  getLalandiaSkyBgUrl,
+} from "src/lib/lalandia-public-assets";
 
 interface LayoutProps {
   page: Page;
@@ -49,14 +53,10 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
     "Lalandia holiday centres with Aquadome water parks in Denmark — Søndervig, Billund and Rødby"
   );
 
-  // Prefer request baseUrl so Pages / 127.0.0.1 / localhost all resolve the same origin
-  let skyBgUrl: string;
-  try {
-    const origin = new URL(baseUrl).origin;
-    skyBgUrl = `${origin}/page-backgrounds/default_title_bg.jpg`;
-  } catch {
-    skyBgUrl = resolvePublicAssetUrl("/page-backgrounds/default_title_bg.jpg");
-  }
+  // Bundled `/_next/static/media/…` sky — never localhost, never multisite-rewritten
+  const skyBgUrl = baseUrl
+    ? `${baseUrl.replace(/\/$/, "")}${LALANDIA_SKY_BG_PATH}`
+    : getLalandiaSkyBgUrl();
 
   return (
     <>

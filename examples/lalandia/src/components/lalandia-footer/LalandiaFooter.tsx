@@ -6,6 +6,7 @@ import { Image, Text, useSitecore } from '@sitecore-content-sdk/nextjs';
 import { CompatibleLink } from 'components/content-sdk/CompatibleLink';
 import { getDatasource, getFieldValue } from 'lib/component-props';
 import { resolvePublicAssetUrl } from 'lib/utils';
+import { getLalandiaFooterBoyBgUrl } from 'lib/lalandia-public-assets';
 import { isBundledLalandiaLogo, LalandiaLogo } from 'components/lalandia-brand/LalandiaLogo';
 import {
   DEFAULT_FOOTER,
@@ -131,9 +132,15 @@ export const FooterView: React.FC<FooterViewProps> = ({
     setSubscribed(true);
   };
 
-  const backgroundSrc = resolvePublicAssetUrl(
-    (isEditing && backgroundImageField?.value?.src) || model.backgroundImageSrc
-  );
+  // Prefer authored Sitecore image when editing; otherwise bundled boy (RH-safe).
+  const authoredBg =
+    isEditing && backgroundImageField?.value?.src
+      ? resolvePublicAssetUrl(backgroundImageField.value.src)
+      : model.backgroundImageSrc &&
+          model.backgroundImageSrc !== DEFAULT_FOOTER.backgroundImageSrc
+        ? resolvePublicAssetUrl(model.backgroundImageSrc)
+        : null;
+  const backgroundSrc = authoredBg || getLalandiaFooterBoyBgUrl();
 
   const renderBookCta = () => {
     if (isEditing && bookCtaField) {

@@ -28,7 +28,9 @@ export default async function Page({ params }: PageProps) {
   const headers = await nextHeaders();
   const requestHost =
     headers.get("x-forwarded-host") || headers.get("host") || undefined;
-  const baseUrl = getBaseUrl(requestHost);
+  const requestProto =
+    headers.get("x-forwarded-proto")?.split(",")[0]?.trim() || undefined;
+  const baseUrl = getBaseUrl(requestHost, requestProto);
 
   // Set site and locale to be available in src/i18n/request.ts for fetching the dictionary
   setRequestLocale(`${site}_${locale}`);
