@@ -16,6 +16,7 @@ import {
   LALANDIA_SKY_BG_PATH,
   getLalandiaSkyBgUrl,
 } from "src/lib/lalandia-public-assets";
+import { LalandiaPageSky } from "components/lalandia-brand/LalandiaPageSky";
 
 interface LayoutProps {
   page: Page;
@@ -78,12 +79,8 @@ const Layout = ({ page, baseUrl: baseUrlProp }: LayoutProps): JSX.Element => {
         )
       ) : (
         <div className="lalandia-page">
-          {/* Dedicated sky layer — more reliable than body CSS vars under Pages <base href> */}
-          <div
-            className="lalandia-page__sky"
-            aria-hidden="true"
-            style={{ backgroundImage: `url(${skyBgUrl})` }}
-          />
+          {/* Client sky — absolute RH origin beats Pages <base href> */}
+          <LalandiaPageSky src={skyBgUrl} />
           <div id="header" className="lalandia-page__slot">
             {route && (
               <AppPlaceholder
